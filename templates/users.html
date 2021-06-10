@@ -1,0 +1,40 @@
+{% extends 'basic_page.html' %}
+{% load static %}
+
+{% block content%}
+    <!-- Feature Highlights Start -->
+    <article class="feature_wrapper">
+        {% for v in data %}
+		
+            <div class="view_detail">
+                <div style="text-align: center">
+                    <h2 style="font-size: 30px; background-color: rgb(26, 127, 194); margin: 4px auto; padding: 5px;">Email: {{ v.email }}</h2>
+                </div>
+                <div class="wrapper">
+                    <a href="{% url 'edit_profile_admin' id=v.id %}" class="butt">
+                        Update Profile
+                    </a>
+                    <a id="delete_user" class="delete_user butt"  data-userid={{ v.id }}>
+                         Delete User
+                    </a>
+                    {% if v.public is True %}
+                        <a href="{% url 'cv_update_admin' id=v.id %}" class="butt">
+                            Update CV
+                        </a>
+                        <a href="{% url 'change_user_type' id=v.id %}" class="butt">
+                            Upgrade as HOD
+                        </a>
+                    {% else %}
+                        <a href="{% url 'change_user_type' id=v.id %}"  class="butt">
+                            Degrade from HOD
+                        </a>
+                    {% endif %}
+                </div></br>
+            </div>
+        {% endfor %}
+    <script type="text/javascript" src="{% static 'js/update_profile.js' %}"></script>
+	</article>
+	<!-- Feature Highlight ends -->
+    
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'basic_page.html' %}
+{% load static %}
+
+{% block content%}
+	<!-- Feature Highlights Start -->
+	<article class="feature_wrapper">
+        {% for v in data %}
+		
+            <div class="view_detail">
+                <div style="text-align: center">
+                    <h2 style="font-size: 30px; background-color: rgb(26, 127, 194); margin: 4px auto; padding: 5px;">Available Jobs</h2>
+                    <h4> Job Title : </h4>
+                    {{ v.job_title }} {{ v.last_name }}
+                </div>
+                    
+                <br/><br/>
+                <h3> Education: </h3>
+                {{ v.education }}
+                <br/><br/>
+                <h3> Range of Salary: </h3>
+                    {{ v.range_of_salary }}
+                <br/><br/>
+                <h3> Extra Services: </h3>
+                    {{ v.plus_services }}
+                <br/><br/>
+                <h3> Experience need: </h3>
+                    {{ v.experience_year }} year
+                <br/><br/>
+                <h3> Task and responsibilities: </h3>
+                    {{ v.task_and_responsibilities }}
+                <br/><br/>   
+                <h3> Qualification and Experiences: </h3>
+                    {{ v.qualification_and_experience }}
+                <br/><br/>
+                <h3> Contract Time: </h3>
+                    {{ v.contract_time }} month
+                <br/><br/>
+                <h3> Expiry Date of this Vacancy: </h3>
+                    {{ v.expiry_date }}
+                <br/><br/>
+                <div class="wrapper">
+                        {% comment %} <a href="#">
+                            <input type="hidden" id="apply_id" value="{{v.id}}"/>
+                            <button class="apply butt"><h4>Apply this Job</h4></button>
+                        </a> {% endcomment %}
+                        {% comment %} {% if user_type == "hod" or user_type == "admin" %}
+                            <a href="#">
+                                <input type="hidden" id="" value="{{v.id}}"/>
+                                <button class="butt"><h4>Update it !</h4></button>
+                            </a>
+                        {% endif %} {% endcomment %}
+                        {% if user_type == "public" %}
+                            <a href="#">
+                                <input type="hidden" id="apply_id" value="{{v.id}}"/>
+                                <button class="apply butt"><h4>Apply this Job</h4></button>
+                            </a>
+                        {% endif %}
+                </div></br>
+            </div>
+        {% endfor %}
+            <script>
+                $(document).ready(function(){
+                    $(".apply").click(function(e){
+                        var id = $(this).parent().children('input').val();
+                        $.ajax({
+                            url: '/apply_job/'+id+'/',
+                            type: 'GET',
+                            success: function (response, textStatus, jqXHR) {
+                                    alert(response);
+                            },
+                         })
+                        
+                    });
+                });
+
+            </script>
+	</article>
+	<!-- Feature Highlight ends -->
+
+
+
+	<div class="space" style="margin:12px"></div>
+	</section>
+
+
+
+{% endblock %}

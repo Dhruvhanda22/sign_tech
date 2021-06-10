@@ -1,0 +1,52 @@
+{% extends 'basic_page.html' %}
+{%block active-profile%}class="active"{%endblock%}
+{% load static %}
+
+{% block content%}
+	<!-- Feature Highlights Start -->
+	<article class="feature_wrapper">
+		<div class="view_detail">
+            <div style="text-align: center">
+                <h2 style="font-size: 30px; background-color: rgb(26, 127, 194); margin: 4px auto; padding: 5px;">Your Profile Details</h2>
+                <h4> Name : </h4>
+				{{ v.first_name }} {{ v.last_name }}
+            <div>
+                
+            <div><br/><br/>
+            <div>
+                <h3> Country: </h3>
+                {{ v.country}}
+            <br/><br/>
+            <div>
+            <h3> City: </h3>
+                {{ v.city}}
+            <br/><br/>
+            <h3> Place: </h3>
+                {{ v.local_place}}
+            <br/><br/>
+            <h3> Contact: </h3>
+                {{ v.contact}}
+            <br/><br/>
+            <h3> Date of Birth: </h3>
+                {{ v.date_of_birth}}
+            <br/><br/>   
+			<h3> Signature: </h3>
+                <img src={{ v.signature }} alt="Signature" style="width:120px;height:100px;"> 
+            <br/><br/> 	
+
+	</article>
+	<!-- Feature Highlight ends -->
+    {% if message%}
+        <script> alert("Add Signature First") </script>
+    {% endif %}
+
+    <div class="c-text container"> 
+        <a href="{% url 'edit_profile' %}"><button class="butt"><h4>Update Profile</h4></button></a>
+        {% if user_type == "public" %}
+            <a href="{% url 'cv_add' %}" style="float:right;"><button class="butt"><h4>Go to CV</h4></button></a>
+        {% endif %}
+	</div>
+
+	<div class="space" style="margin:12px"></div>
+	</section>
+{% endblock %}

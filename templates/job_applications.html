@@ -1,0 +1,28 @@
+{% extends 'basic_page.html' %}
+{% load static %}
+
+{% block content%}
+    <!-- Feature Highlights Start -->
+	<article class="feature_wrapper">
+        <div style="text-align: center">
+            <h2 style="font-size: 30px; background-color: rgb(26, 127, 194); margin: 4px auto; padding: 5px;">Job Applications</h2>
+        <div>
+		<div class="feature_container">
+			<div class="feature-layout job-application">
+                {% for i in data %} 		
+                    <a href="{% url 'user_detail' id=i.user_id vacancy=i.v_id %} "><div class="feature">
+                        <p>Name : {{ i.name }}</p></br>
+                        <p>Position : {{ i.position }}</p></br>
+                        <p>Higher Education : {{ i.higher_education }}</p></br>   
+                    </div>
+                    </a>	
+                    
+                {% endfor %}		
+			</div>
+		</div>
+
+	</article>
+	<!-- Feature Highlight ends -->
+
+
+{% endblock %}

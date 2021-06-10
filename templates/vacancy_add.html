@@ -1,0 +1,65 @@
+{% extends 'basic_page.html' %}
+{% load static %}
+{% block content%}
+	<!-- Page Header -->
+	<section class="page_heading">
+		<h3 class="page-heading">Add Vacancy</h3>
+	</section>
+	<!-- Page Header Ends -->
+
+	<section class="page-container">
+
+		<!-- Page Content Starts -->
+		<br/><br/>
+
+		
+		<div class="con-1">
+			<form id = "vacancy_form" name="vacancy_form" method='post' onsubmit="return false" enctype='multipart/form-data'>
+				{% csrf_token %}
+				<input type="text" id="vacancy_no" name="vacancy_no" class="form-field" value="{{ v.vacancy_no }}" style="display: none;">
+				<label>Job Title</label>
+				<input name="job_title" type="job_title" class="form-field" id="job_title" value="{{ v.user_no }}" required>
+				<br/>
+
+				<label>Education Level</label>
+				<input type="education" name="education" class="form-field"  id="education" value="{{ v.user_no }}" required>
+				<br/>
+				
+                <label>Range of Salary</label>
+				<input type="number" id="range_of_salary" name="range_of_salary" minlength="8" class="form-field" value="{{ v.user_no }}">
+				<br/>
+
+				<label>Extra Services</label>
+				<input type="plus_services" id="plus_services" name="plus_services" minlength="8" class="form-field" value="{{ v.user_no }}">
+				<br/>
+
+                <label>Experience Requirement (on year)</label>
+				<input type="number" id="experience_year" name="experience_year" minlength="8" class="form-field" value="{{ v.user_no }}" required>
+				<br/>
+
+                <label>Task and Responsibilities</label>
+				​<textarea rows="10" cols="70" id="task_and_responsibilities" name="task_and_responsibilities" class="form-field" value="{{ v.user_no }}" required></textarea>
+				<br/>
+
+                <label>Qualification and Experience</label>
+				​<textarea rows="10" cols="70" id="qualification_and_experience" name="qualification_and_experience" class="form-field" value="{{ v.user_no }}" required></textarea>
+				<br/>
+
+                <label> Vacancy Expiry Date</label>
+				<input type="date" id="expiry_date" name="expiry_date" minlength="8" class="form-field" value="{{ v.user_no }}" required>
+				<br/>
+                
+                <label>Contract Time (on month)</label>
+				<input type="number" id="contract_time" name="contract_time" minlength="8" class="form-field" value="{{ v.user_no }}">
+				<br/>
+                </br></br>
+				<button id="add_vacancy_submit" class="main_button" >Register detail</button> 
+                <script type="text/javascript" src="{% static 'js/vacancy.js' %}"></script>
+				<br/> <br/>
+
+			</form>
+		</div>
+
+		<!-- Page Content Ends   -->
+	</section>
+{% endblock %}

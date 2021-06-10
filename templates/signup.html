@@ -1,0 +1,87 @@
+{% extends 'basic_page.html' %}
+{% load static %}
+{% comment %} {% load staticfiles%} {% endcomment %}
+
+{% comment %} {% block content %}
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+  </form>
+{% endblock %} {% endcomment %}
+
+{% block content%}
+
+
+	<!-- Page Header -->
+	<section class="page_heading">
+		<h3 class="page-heading">SIGN UP</h3>
+	</section>
+	<!-- Page Header Ends -->
+
+	<section class="page-container">
+
+		<!-- Page Content Starts -->
+		<br/><br/>
+
+		
+		<div class="con-1">
+			{% comment %} <form method="post">
+    			{% csrf_token %}
+				<ul>
+    			{{ form.as_ul }}</br>
+				<h4>I accept all the agreement and policy of this company.</h4>
+				<a href="#"> </br>Please click here to see the agreement and policy. </a>
+				</ul></br>
+    			<button type="submit" class="main_button" id="button">Sign up</button>
+  			</form> {% endcomment %}
+
+			<form id = "forms" name="signupForm" method='post' onsubmit="return false">
+				{% csrf_token %}
+				<label>Username</label>
+				<input name="name" type="text" class="form-field" placeholder="Full Name" id="name" required>
+				<br/>
+
+				<label>Your Email</label>
+				<input type="email" name="email" class="form-field" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email" required>
+				<br/>
+
+				<label>Password</label>
+				<input type="password" id="pwd1" name="pwd" minlength="8" class="form-field" placeholder="Password" required>
+				<br/>
+
+				<label>Re-Password</label>
+				<input type="password" id="pwd2" name="pwd1" minlength="8" class="form-field" placeholder="Re-Password" required>
+				<br/>
+				</br></br>
+				<input type="checkbox" id="agree" name="agree" value="true">
+  				<label for="agree">I accept all the agreement and policy of this company</label>
+				<br>
+
+
+				
+				<a href="#" style="color: white;"> </br>Please click here to see the agreement and policy. </a>
+				</ul></br>
+				<br/>
+				<button id="formsubmit" class="main_button" >Register detail</button> 
+				<script type="text/javascript" src="{% static 'js/signup.js' %}"></script>
+				{% comment %}  {% endcomment %}
+				<p class="result" style="color:green"></p>
+
+				<br/>
+				{% if messages %}
+				{% for message in messages %}
+					<div class="alert alert-danger" role="alert">
+						{{ message }}
+					</div>
+				{% endfor %}
+				{% endif %}
+				<br/> <br/>
+
+			</form>
+		</div>
+
+		<!-- Page Content Ends   -->
+	</section>
+{% endblock %}

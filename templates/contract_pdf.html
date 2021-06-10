@@ -1,0 +1,20 @@
+<html>
+<head>
+  <title>Test</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contract</h1>
+  <h3> I "{{ data.name }}", I accept the offer, the position of {{ data.position }} in your company. 
+  The salary of my job will be {{ data.salary }}. According to the vacancy our contract will be valid for {{ data.contract_time }} months. 
+  And I am ready for this job. Company can claim according to the contract if any issues occur.I signature on this contract on my own decision. 
+  </h3></br>
+  <p>Your Sincerely,</p>
+  <img src="../media/{{data.signature}}" width="150" height="70"> 
+  <p>{{data.full_name}}</p>
+</body>
+</html>

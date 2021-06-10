@@ -1,0 +1,80 @@
+{% extends 'basic_page.html' %}
+{% load static %}
+
+{% block content%}
+	<!-- Feature Highlights Start -->
+	<article class="feature_wrapper">
+            <div class="view_detail">
+                <div style="text-align: center">
+                    <h2 style="font-size: 30px; background-color: rgb(26, 127, 194); margin: 4px auto; padding: 5px;">Personial Detail</h2>
+                </div>     
+                <br/><br/>
+                <h3> Name: </h3>
+                {{ data.name }}
+                <br/><br/>
+                <h3> Country: </h3>
+                    {{ data.country }}
+                <br/><br/>
+                <h3> City: </h3>
+                    {{ data.city }}
+                <br/><br/>
+                <h3> Local Place: </h3>
+                    {{ data.local_place }} year
+                <br/><br/>
+                <h3> Contact: </h3>
+                    {{ data.contact }}
+                <br/><br/>   
+                <h3> Date of Birth: </h3>
+                    {{ data.dob }}
+                <br/><br/>
+
+            <div class="view_detail">
+                <div style="text-align: center">
+                    <h2 style="font-size: 30px; background-color: rgb(26, 127, 194); margin: 4px auto; padding: 5px;">CV Detail</h2>
+                </div>     
+                <br/><br/>
+                <h3> Profession: </h3>
+                {{ data.profession }}
+                <br/><br/>
+                <h3> Higher Education: </h3>
+                    {{ data.education }}
+                <br/><br/>
+                <h3> Skills: </h3>
+                    {{ data.skills }}
+                <br/><br/>
+                <h3> Experience Detail  </h3>
+                    {{ data.experience_detail }} year
+                <br/><br/>
+                <h3> Refrence Name: </h3>
+                    {{ data.reference_name }}
+                <br/><br/>   
+                <h3> Reference Working Place: </h3>
+                    {{ data.reference_workat }}
+                <br/><br/>
+                <h3> Refrenece Position: </h3>
+                    {{ data.reference_position }} month
+                <br/><br/>
+                <h3> Refrence Email: </h3>
+                    {{ data.reference_email }}
+                <br/><br/>      
+                <h3> Refrence Contact: </h3>
+                    {{ data.reference_contact }}
+                <br/><br/>             
+                <div class="wrapper">
+                        <a href="{% url 'create_contact' id=data.user_id vacancy=data.v_id %}">
+                            <button class="apply butt"><h4>Create Agreement</h4></button>
+                        </a>
+                        {% comment %} href="{% url 'create_contact' id=i.user_id  vacancy=i.v_id%} " {% endcomment %}
+                </div></br>
+            </div>
+	</article>
+	<!-- Feature Highlight ends -->
+
+
+
+	<div class="space" style="margin:12px"></div>
+	</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'basic_page.html' %}
+{% load static %}
+
+{% block content%}
+	<article class="feature_wrapper">
+		<div class="view_detail">
+            <div style="text-align: center">
+                <h2 style="font-size: 30px; background-color: rgb(26, 127, 194); margin: 4px auto; padding: 5px;">Subject : Offer for Job as a {{ data.position }}</h2>
+            <div>
+            <div><br/><br/>
+            <div>
+                <h3> Hi {{ data.name }}, We want to offer you the position of {{ data.position }} in our company. 
+                The salary of your job will be {{ data.salary }}. According to the vacancy our contract will be valid for {{ data.contract_time }} months. 
+                If you are ready for this job and want to join it please signature on this contract.
+                </h3></br>
+                <div>
+                    <form id = "signature_form" name="signupForm" method='post' onsubmit="return false" enctype='multipart/form-data'>
+                        <input type="contract_id" id="contract_id" name="contract_id" class="form-field" value="{{ data.id }}" style="display: none;">
+                        <label>Signature</label>
+                        <br/>
+                        <img src={{data.signature}} alt="Signature" style="width:120px;height:100px; display: none;" id="img"> 
+                        </br></br>
+                        <button onclick="display_signature()" id="signature_submit" class="main_button" >Signature on it!</button> </br>
+                        <button id="submit_contract" class="main_button"style="display: none;" >Submit it!</button> </br>
+                        <label>I am responsible myself.</label>
+                        
+                        <br/>
+                        
+                    </form>
+                    <script type="text/javascript" src="{% static 'js/contract.js' %}"></script>
+                </div>
+            </div>
+            
+
+	</article>
+	<!-- Feature Highlight ends -->
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'basic_page.html' %}
+{% load static %}
+{% block content%}
+	<!-- Page Header -->
+	<section class="page_heading">
+		<h3 class="page-heading">Curriculum Vita</h3>
+	</section>
+	<!-- Page Header Ends -->
+
+	<section class="page-container">
+
+		<!-- Page Content Starts -->
+		<br/><br/>
+
+		
+		<div class="con-1">
+            <button id="enable_editing" class="main_button" onclick="myFunction()">Edit Mode On</button> 
+			<form id = "cv_form" name="vacancy_form" method='post' onsubmit="return false" enctype='multipart/form-data'>
+				{% csrf_token %}
+                <fieldset id="myFieldset" disabled>
+				<input type="text" id="user_no" name="user_no" class="form-field" value="{{ v.user_no }}" style="display: none;">
+				<label>Which is your profession ?</label>
+				<input type="text" name="profession" class="form-field"  id="profession" value="{{ v.profession }}" required>
+				<br/>
+
+                <label>Higher Education</label>
+				<input type="text" name="education" class="form-field"  id="education" value="{{ v.education }}" required>
+				<br/>
+				
+                
+
+                <label>Describe Skills( ref:Point out )</label>
+                ​<textarea rows="10" cols="70" id="skills" name="skills" class="form-field" value="{{ v.skills }}" required></textarea>
+				<br/>
+
+				<label>Experience Detail( ref:Point out )</label>
+                ​<textarea rows="10" cols="70" id="experience_detail" name="experience_detail" value="{{ v.experience_detail }}" class="form-field" required></textarea>
+				<br/>
+
+                <label>Reference Name</label>
+				<input type="reference_name" id="reference_name" name="reference_name" minlength="8" class="form-field" value="{{ v.reference_name }}" >
+				<br/>
+
+                <label>Where does your reference work ?</label>
+                <input type="reference_workat" id="reference_workat" name="reference_workat" minlength="8" class="form-field" value="{{ v.reference_workat }}" >
+				<br/>
+
+                <label>On what position your refrence work ?</label>
+                 <input type="reference_position" id="reference_position" name="reference_position" minlength="8" class="form-field" value="{{ v.reference_position }}">
+				<br/>
+
+                <label>Write your refrence email id .</label>
+				<input type="email" id="reference_email" name="reference_email" minlength="8" class="form-field" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" value="{{ v.reference_email }}">
+				<br/>
+                
+                <label>Write your reference contact .</label>
+				<input type="reference_contact" id="reference_contact" name="reference_contact" minlength="8" class="form-field" value="{{ v.reference_contact }}">
+				<br/>
+                </br></br>
+				<button id="cv_submit" class="main_button" >Register detail</button> 
+				<br/> <br/>
+                <script>
+                    $(document).ready(function(){
+                    $("#skills").val("{{ v.skills }}");
+                    $("#experience_detail").val("{{ v.experience_detail }}");
+                    });
+                </script>
+                </fieldset>
+			</form>
+            <script type="text/javascript" src="{% static 'js/cv.js' %}"></script>
+		</div>
+
+		<!-- Page Content Ends   -->
+	</section>
+{% endblock %}

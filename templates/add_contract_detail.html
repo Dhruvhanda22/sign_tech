@@ -1,0 +1,52 @@
+{% extends 'basic_page.html' %}
+{% load static %}
+
+{% block content%}
+
+
+	<!-- Page Header -->
+	<section class="page_heading">
+		<h3 class="page-heading">ADD CONTRACT</h3>
+	</section>
+	<!-- Page Header Ends -->
+
+	<section class="page-container">
+
+		<!-- Page Content Starts -->
+		<br/><br/>
+
+		
+		<div class="con-1">
+
+			<form id = "contract_forms" name="create_contract" method='post' onsubmit="return false">
+				{% csrf_token %}
+				<label>Vacant Position</label>
+				<input name="position" type="text" class="form-field" id="position" value="{{ data.position }}" required>
+				<br/>
+
+				<label>Applier Name</label>
+				<input type="name" name="name" class="form-field"  id="name" value="{{ data.name }}" required>
+				<br/>
+
+                <label>Email</label>
+				<input type="email" name="email" class="form-field" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email"value="{{ data.email }}" required>
+				<br/>
+
+				<label>Contract Time (Month)</label>
+				<input type="contract_time" id="contract_time" name="contract_time" class="form-field" value="{{ data.contract_time }}" required>
+				<br/>
+
+				<label>Salary</label>
+				<input type="salary" id="salary" name="salary" class="form-field" maxlength="20" value="{{ data.salary }}" required>
+				<br/>
+				</br></br>
+				<br>
+				<button id="add_contract" class="main_button" >Send Contract</button> 
+				<br/> <br/>
+			</form>
+			<script type="text/javascript" src="{% static 'js/contract.js' %}"></script>
+		</div>
+
+		<!-- Page Content Ends   -->
+	</section>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'basic_page.html' %}
+{% load static %}
+
+{% block content%}
+
+
+	<!-- Page Header -->
+	<section class="page_heading">
+		<h3 class="page-heading">SIGN IN</h3>
+	</section>
+	<!-- Page Header Ends -->
+
+	<section class="page-container">
+
+		<!-- Page Content Starts -->
+		<br/><br/>
+
+		
+		<div class="con-1">
+			<form id = "forms" name="signinForm" action="user_log_in" method='post' onsubmit="return false">
+				{% csrf_token %}
+				<label>Email</label>
+				<input type="email" name="email" class="form-field" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email" required>
+				<br/>
+
+				<label>Password</label>
+				<input type="password" id="pwd1" name="pwd" minlength="8" class="form-field" placeholder="Password" required>
+				<br/>
+
+				<br/>
+				<button id="button_login" class="main_button">Log in</button> <br/>
+				<a href="{% url 'forget_password_page' %}" style="color: white;"> </br> Forget Password ? </a>
+				<script type="text/javascript" src="{% static 'js/signin.js' %}"></script>
+				<script type="text/javascript" src="{% static 'js/signup.js' %}"></script>
+
+				<br/>
+				<br/> <br/>
+
+			</form>
+		</div>
+		<!-- Page Content Ends   -->
+	</section>
+{% endblock %}

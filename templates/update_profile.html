@@ -1,0 +1,81 @@
+{% extends 'basic_page.html' %}
+{% load static %}
+{% comment %} {% load staticfiles%} {% endcomment %}
+
+{% comment %} {% block content %}
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+  </form>
+{% endblock %} {% endcomment %}
+
+{% block content%}
+
+
+	<!-- Page Header -->
+	<section class="page_heading">
+		<h3 class="page-heading">EDIT YOUR PROFILE</h3>
+	</section>
+	<!-- Page Header Ends -->
+
+	<section class="page-container">
+
+		<!-- Page Content Starts -->
+		<br/><br/>
+
+		
+		<div class="con-1">
+			<form id = "profile_form" name="signupForm" method='post' onsubmit="return false" enctype='multipart/form-data'>
+				{% csrf_token %}
+				<input type="text" id="user_no" name="user_no" class="form-field" value="{{ user_no }}" style="display: none;">
+				<label>First Name</label>
+				<input name="first_name" type="text" class="form-field" id="first_name"  value="{{ v.first_name }}" required>
+				<br/>
+
+				<label>Last Name</label>
+				<input type="last_name" name="last_name" class="form-field"  id="last_name" value="{{ v.last_name }}" required>
+				<br/>
+
+				<label>Country</label><br/>
+				<select id="country" name="country" class="form-field" style="width: 33%;">
+                    {% for c in country %}
+                        <option value="{{c}}" {% if c == v.country %} selected="selected" {% endif %} >{{c}}</option>
+                    {% endfor %}
+                </select>
+				<br/>
+				
+                <label>City</label>
+				<input type="city" id="city" name="city" class="form-field" value="{{ v.city }}" required>
+				<br/>
+
+				<label>Place</label>
+				<input type="place" id="local_place" name="local_place" class="form-field"  value="{{ v.local_place }}" required>
+				<br/>
+
+                <label>Contact</label>
+				<input type="contact" id="contact" name="contact" class="form-field" value="{{ v.contact }}"required>
+				<br/>
+
+                <label>Date of Birth</label>
+				<input type="date" id="date_of_birth" name="date_of_birth" class="form-field" value="{{ v.date_of_birth }}" required>
+				<br/>
+
+                <label>Signature</label>
+				<input onchange = filechanged() type="file" id="signature" name="signature" class="form-field" accept="image/*" value="{{ v.signature }}" required>
+				<br/>
+                <img src={{ v.signature }} alt="Signature" style="width:120px;height:100px;" id="img"> 
+				</br></br>
+				<button id="update_profile_submit" class="main_button" >Register detail</button> 
+                <script type="text/javascript" src="{% static 'js/update_profile.js' %}"></script>
+
+				<br/>
+				<br/> <br/>
+
+			</form>
+		</div>
+
+		<!-- Page Content Ends   -->
+	</section>
+{% endblock %}

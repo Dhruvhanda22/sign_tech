@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Digital Signature</title>
+	
+
+	<!-- Stylesheet -->
+	<link rel="Stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+	
+	<link rel="Stylesheet" type="text/css" href="{% static 'css/homepage.css' %}" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- Header Starts -->
+	<header class="header">
+		<!-- Logo and Text -->
+		<div class="logo"><img src="{% static 'images/logo.jpg' %}" style="height: 70px;"/></div>
+		<div class="logo_text"> Sign Tech</div>
+
+		<div class="clear"></div>
+
+		<!-- Navigation -->
+		<nav class="navigation">
+			<ul class="nav" id="myDIV">
+			{% if cond == 'auth' %}
+				{% if user_type == "public" %}
+							<li><a href="{% url 'home' %}" {%block active-home%}{%endblock%} >Home</a></li>
+							<li><a href="{% url 'profile' %}" {%block active-profile%}{%endblock%}>Profile</a></li>	
+							<li style="margin-left: 30px;"><h3>Hello, {{ user_name }}</h3></li>
+							<script type="text/javascript" src="{% static 'js/normal_url.js' %}"></script>
+				{% elif user_type == "hod" %}
+					<li><a href="{% url 'home' %}" >Home</a></li>
+					<li><a href="{% url 'profile' %}">Profile</a></li>	
+					<li><a href="{% url 'vacancy_add' %}">Add Vacancy</a></li>
+					<li style="margin-left: 30px;"><h3>Hello HOD, {{ user_name }}</h3></li>		
+				{% elif user_type == "admin" %}
+					<li><a href="{% url 'home' %}" >Home</a></li>				
+					<li style="margin-left: 30px;"><h3>Hello Admin, {{ user_name }}</h3></li>	
+				{% endif %}	
+			{% else %}
+					<li><a href="{% url 'signup' %}" onclick="action()">Register</a></li>
+					<li><a href="{% url 'sign_in' %}">Sign in</a></li>
+			{% endif %}
+			</ul>
+			{% if cond == 'auth' %}
+				<a class="logout" href="{% url 'logout' %}">Log out </a>
+			{% endif %}	
+		</nav>
+		<div class="clear"></div>
+		<div class="space"></div>
+<!-- Header Ends -->
+{% block content %}
+{% endblock %}
+
+<!-- Footer Starts -->
+<footer class="footer">
+	<div class="important_links_wrapper">
+		<h4 class="footer_link_header">Important Links</h4>
+		<ul class="links">
+			<li><a href="#">Our Projects</a></li>
+			<li><a href="#">Our partners</a></li>
+			<li><a href="#">Blogs</a></li>
+		</ul>
+	</div>
+
+	<div class="important_links_wrapper">
+		<h4 class="footer_link_header">More Links</h4>
+		<ul class="links">
+			<li><a href="#">Non-Disclosure Agreement</a></li>
+			<li><a href="#">Payments And Agreements</a></li>
+			
+		</ul>
+	</div>
+
+	<div class="important_links_wrapper_right">
+		<h4 class="footer_link_header">Follow Us</h4>
+		<ul class="social_links">
+			<li><a href="https://www.facebook.com" style="padding: 0px;"><img src="{% static 'images/fb.png' %}" /></a></li>
+			<li><a href="https://www.instagram.com"><img src="{% static 'images/insta.png' %}" /></a></li>
+			<li><a href="https://www.youtube.com"><img src="{% static 'images/yt.png' %}"/></a></li>
+		</ul>
+	</div>
+
+
+	<div class="clear"></div>
+	<p class="footer_rights">All rights reserved @2020.</p>
+</footer>
+<!-- Footer Ends -->
+
+<!-- Script -->
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/activebutton.js' %}"></script>
+
+</body>
+<div class="loader-box">
+	<div class="loader"></div>
+</div>
+</html>

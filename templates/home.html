@@ -1,0 +1,48 @@
+{% extends 'basic_page.html' %}
+{%block active-home%}class="active"{%endblock%}
+{% load static %}
+
+{% block content%}
+
+    <!-- Feature Highlights Start -->
+	<article class="feature_wrapper">
+		<div class="feature_container">
+			{% comment %} <h2 style="font-size: 40px; background-color: #0b3c5d; margin: 16px auto; padding: 13px;text-align: center;">Avialable Jobs</h2> {% endcomment %}
+			<div class="feature-layout">		
+				<a href="{% url 'profile' %}">
+					<img src="{% static 'images/profile.png' %}" width='150' height='140'>
+					<div class="feature">
+						<p>Profile</p>
+					</div>
+				</a>		
+                <a href="{% url 'cv_add' %}">
+					<img src="{% static 'images/plus.png' %}" width='150' height='140'>
+					<div class="feature">
+						<p>Curriculam Vita</p></br>
+					</div>
+				</a>	
+                <a href="{% url 'offers' %}">
+					<img src="{% static 'images/offer.png' %}" width='150' height='140'>
+					<div class="feature">
+						<p>Offers</p></br>
+					</div></a>	
+                <a href="{% url 'available_jobs' %}">
+					<img src="{% static 'images/jobs.png' %}" width='150' height='140'>
+					<div class="feature">
+						<p>Avaiable Jobs</p></br>
+					</div>
+				</a>	
+				<a href="{% url 'go_change_password' %}">
+					<img src="{% static 'images/setting.png' %}" width='150' height='140'>
+					<div class="feature">
+						<p>Change Password</p></br>
+					</div>
+				</a>
+			</div>
+		</div>
+
+	</article>
+	<!-- Feature Highlight ends -->
+
+
+{% endblock %}
